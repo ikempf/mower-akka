@@ -8,9 +8,12 @@ lazy val root = (project in file("."))
           version := "1.1",
           scalaVersion := "2.12.3",
           libraryDependencies ++= Seq(
-            "org.scalatest" %% "scalatest" % "3.0.1" % "test",
-            "com.typesafe.akka" %% "akka-actor" % akkaVersion,
+            "org.slf4j" % "slf4j-simple" % "1.7.25" withSources(),
+            "com.typesafe.akka" %% "akka-typed" % akkaVersion withSources(),
+            "com.typesafe.akka" %% "akka-typed-testkit" % akkaVersion % "test" withSources(),
             "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test" withSources(),
-            "com.typesafe.akka" %% "akka-slf4j" % akkaVersion % "test"
+            "org.scalatest" %% "scalatest" % "3.0.1" % "test" withSources()
           )
         )
+
+cancelable in Global := true
